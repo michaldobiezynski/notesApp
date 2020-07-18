@@ -1,8 +1,7 @@
-const add = require("./utils");
+const validator = require("validator");
+
 const myNotes = require("./notes");
 
 myNotes();
 
-const sum = add(4, -2);
-
-console.log(sum);
+console.log(validator.isURL("asdahttps://mead.iodads/s"));
