@@ -1,6 +1,8 @@
-const fs = require("fs");
+const add = require("./utils");
+const myNotes = require("./notes");
 
-fs.appendFile("notes.txt", "data to append", function (err) {
-  if (err) throw err;
-  console.log("Saved!");
-});
+myNotes();
+
+const sum = add(4, -2);
+
+console.log(sum);
