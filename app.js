@@ -1,10 +1,11 @@
-const validator = require("validator");
 const chalk = require("chalk");
+
+const validator = require("validator");
 const yargs = require("yargs");
 
-// console.log(chalk.green.inverse.bold("Success!"));
+const note = require("./notes");
 
-// const myNotes = require("./notes");
+// console.log(chalk.green.inverse.bold("Success!"));
 
 // myNotes();
 
@@ -38,8 +39,7 @@ yargs.command({
     },
   },
   handler: function (argv) {
-    console.log("Title: " + argv.title);
-    console.log("Body: " + argv.body);
+    note.addNote(argv.title, argv.body);
   },
 });
 
