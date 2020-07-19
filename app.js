@@ -1,10 +1,16 @@
 const validator = require("validator");
 const chalk = require("chalk");
 
-console.log(chalk.green.inverse.bold("Success!"));
+// console.log(chalk.green.inverse.bold("Success!"));
 
-const myNotes = require("./notes");
+// const myNotes = require("./notes");
 
-myNotes();
+// myNotes();
 
-console.log(validator.isURL("asdahttps://mead.iodads/s"));
+const command = process.argv[2];
+
+if (command === "add") {
+  console.log("Adding note!");
+} else if (command === "remove") {
+  console.log("Removing note!");
+}
