@@ -6,7 +6,20 @@ const getNotes = function () {
   console.log("Your notes");
 };
 
-const addNote = function (title, body) {
+const removeNote = function (title) {
+  const notes = loadNotes();
+  const notesToStay = notes.filter(function (note) {
+    return note.title !== title;
+  });
+
+  if (notesToStay.length === notes.length) {
+    console.log(chalk.red.inverse.bold("No note found!"));
+  } else {
+    console.log(chalk.green.inverse.bold("Note removed!"));
+    saveNotes(notesToStay);
+  }
+};
+const addNote = function (title) {
   const notes = loadNotes();
   const duplicateNotes = notes.filter(function (note) {
     return note.title === title;
@@ -40,4 +53,8 @@ const loadNotes = function () {
   }
 };
 
-module.exports = { getNotes: getNotes, addNote: addNote };
+module.exports = {
+  getNotes: getNotes,
+  addNote: addNote,
+  removeNote: removeNote,
+};
