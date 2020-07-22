@@ -27,13 +27,25 @@ const removeNote = (title) => {
     saveNotes(notesToStay);
   }
 };
+
+const readNote = (title) => {
+  const notes = loadNotes();
+
+  noteToBeRead = notes.find((note) => note.title === title);
+
+  if (noteToBeRead) {
+    console.log(chalk.magenta.inverse.bold("Title: " + noteToBeRead.title));
+    console.log(chalk.green.inverse.bold("body: " + noteToBeRead.body));
+  } else {
+    console.log(chalk.red.inverse.bold("No note found."));
+  }
+};
+
 const addNote = (title, body) => {
   const notes = loadNotes();
-  const duplicateNotes = notes.filter((note) => {
-    return note.title === title;
-  });
+  duplicateNote = notes.find((note) => note.title === title);
 
-  if (duplicateNotes.length === 0) {
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body,
@@ -66,4 +78,5 @@ module.exports = {
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,
+  readNote: readNote,
 };
