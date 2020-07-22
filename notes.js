@@ -6,6 +6,14 @@ const getNotes = () => {
   console.log("Your notes");
 };
 
+const listNotes = () => {
+  const notes = loadNotes();
+  console.log(chalk.magenta.inverse.bold("Your notes:"));
+  notes.forEach((note) => {
+    console.log(chalk.blue.inverse.bold("- " + note.title));
+  });
+};
+
 const removeNote = (title) => {
   const notes = loadNotes();
   const notesToStay = notes.filter((note) => {
@@ -57,4 +65,5 @@ module.exports = {
   getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
+  listNotes: listNotes,
 };
